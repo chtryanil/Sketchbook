@@ -1,101 +1,65 @@
+import { Merriweather } from "next/font/google";
 import Image from "next/image";
+import { SketchButton } from "./components/SketchButton";
+import { SketchImage } from "./components/SketchImage";
+import { VerticalImageSlider } from "./components/VerticalImageSlider";
+import { BrandNameBackground } from "./components/BrandNameBackground";
+
+const merriweather = Merriweather({
+  weight: '700',
+  subsets: ['latin'],
+  variable: '--font-merriweather',
+});
+
+const trendingFashionImages = [
+  "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=96&h=96&fit=crop",
+  "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=96&h=96&fit=crop",
+  "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=96&h=96&fit=crop",
+  "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=96&h=96&fit=crop",
+];
+
+const othersWearingImages = [
+  "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=96&h=96&fit=crop",
+  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=96&h=96&fit=crop",
+  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=96&h=96&fit=crop",
+  "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=96&h=96&fit=crop",
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="sketchbook-page min-h-screen p-8 font-handwritten relative overflow-hidden flex">
+      <BrandNameBackground />
+      
+      <div className="fixed left-0 top-0 h-full z-10">
+        <VerticalImageSlider images={trendingFashionImages} title="Trending Fashion" side="left" direction="up" />
+      </div>
+      
+      <main className="flex-1 flex flex-col gap-8 items-center relative z-10 mx-auto px-32">
+        <h1 className="text-5xl font-bold sketch-title">Sketchbook</h1>
+        <p className="text-xl text-center max-w-2xl sketch-text">
+          Welcome to your digital fashion sketchbook. Unleash your creativity and bring your designs to life!
+        </p>
+        <div className="sketch-image-frame">
+          <SketchImage
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&h=400&fit=crop&crop=focalpoint"
+            alt="Fashion sketch"
+            width={300}
+            height={400}
+          />
+        </div>
+        <SketchButton href="/start-designing">Start Designing</SketchButton>
+        <div className="mt-8 text-center">
+          <p className="text-sm sketch-text">Flip through the pages to explore more</p>
+          <span className="text-2xl animate-bounce">↓</span>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <div className="fixed right-0 top-0 h-full z-10">
+        <VerticalImageSlider images={othersWearingImages} title="What Others Are Wearing" side="right" direction="down" />
+      </div>
+      
+      <div className="watercolor-splash"></div>
+      <div className="watercolor-splash" style={{top: 'auto', bottom: '-50px', right: '-50px', left: 'auto', transform: 'rotate(15deg)', backgroundImage: 'radial-gradient(circle, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0) 70%)'}}></div>
     </div>
   );
 }

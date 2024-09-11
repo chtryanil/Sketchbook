@@ -3,25 +3,200 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f7f2;
+  --foreground: #333333;
+  --accent: #ff6b6b;
+  --secondary-accent: #4ecdc4;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #2a2a2a;
+    --foreground: #f0f0f0;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Caveat', cursive;
+}
+
+.sketchbook-page {
+  background-image: 
+    linear-gradient(to right, rgba(229, 229, 229, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229, 229, 229, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.sketch-title {
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  font-family: var(--font-caveat), cursive;
+  /* Add any additional styles you want for the sketch title */
+}
+
+.sketch-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--accent);
+  transform: skew(-12deg);
+}
+
+.sketch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-text::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='3' viewBox='0 0 100 3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 1.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3' fill='none' stroke='%23ff6b6b' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 20px 3px;
+  background-repeat: repeat-x;
+}
+
+.watercolor-splash {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 300px;
+  height: 300px;
+  background-image: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0) 70%);
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+
+.sketch-image-frame {
+  position: relative;
+  padding: 20px;
+}
+
+.sketch-image-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px dashed var(--secondary-accent);
+  transform: rotate(-2deg);
+}
+
+.sketch-button {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.sketch-button:hover {
+  transform: translateY(-3px);
+}
+
+.sketch-button::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 5px;
+  right: 5px;
+  height: 3px;
+  background-color: rgba(0,0,0,0.1);
+  filter: blur(3px);
+}
+
+@keyframes writing {
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-writing {
+  animation: writing 2s linear forwards;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Add these new styles to the existing file */
+
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-slide {
+  animation: slide 30s linear infinite;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 30s linear infinite;
+}
+
+.animate-slide-down {
+  animation: slide-down 30s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(var(--rotation)); }
+  25% { transform: translate(10px, -10px) rotate(var(--rotation)); }
+  50% { transform: translate(0, -20px) rotate(var(--rotation)); }
+  75% { transform: translate(-10px, -10px) rotate(var(--rotation)); }
+}
+
+.animate-float {
+  animation: float ease-in-out infinite;
+}
+
+.rotate-random {
+  --rotation: calc(var(--tw-rotate, 0) * 1deg);
 }
