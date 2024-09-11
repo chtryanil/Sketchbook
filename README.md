@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sketchbook - Fashion Design App
 
-## Getting Started
+## Overview
 
-First, run the development server:
+**Sketchbook** is an interactive fashion design app where users take on the role of a designer. The front page is styled as a digital sketchbook, guiding users through a creative process as they explore fashion designs, trends, and get AI-powered recommendations. Every element on the page, including buttons and images, plays a role in telling a story, making the experience immersive and personalized for fashion lovers, especially Gen Z users.
 
+## Key Features
+
+- **Sketchbook-Themed UI**: The entire app feels like a fashion designer’s sketchbook, with hand-drawn elements, organic animations, and interactive storytelling.
+- **Interactive Story**: Users explore the app through a creative journey, making design decisions that unfold as they scroll and click.
+- **AI-Powered Fashion Suggestions**: Upload your own outfits or explore trending styles with the help of AI-powered recommendations tailored to your style.
+- **Artistic Design**: Every component, from buttons to backgrounds, feels like a hand-drawn, artistic creation.
+
+## Tech Stack
+
+- **Frontend**: React, Framer Motion for animations, Tailwind CSS for styling.
+- **Icons**: Lucide-React for modern, simple icons.
+- **Animation**: Framer Motion for smooth, interactive transitions and animations.
+
+## Project Setup
+
+To get started with the project locally, follow these steps:
+
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/chtryanil/Sketchbook.git
